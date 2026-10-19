@@ -1,9 +1,0 @@
-{
-  "name": "explica-pr",
-  "version": "0.1.0",
-  "private": true,
-  "description": "Explique pull requests em português claro com IA.",
-  "type": "module",
-  "scripts": { "start": "node servidor.js" },
-  "engines": { "node": ">=20" }
-}

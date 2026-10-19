@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Explica PR — resumo de código com IA",
+  "version": "0.2.0",
+  "description": "Explique um diff em português para engenharia, produto ou liderança.",
+  "permissions": ["storage", "clipboardWrite"],
+  "host_permissions": ["https://generativelanguage.googleapis.com/*"],
+  "action": {
+    "default_title": "Explica PR",
+    "default_popup": "janela.html"
+  },
+  "options_ui": {
+    "page": "configuracoes.html",
+    "open_in_tab": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "explica-pr@viniciuscampeao.dev",
+      "strict_min_version": "128.0"
+    }
+  }
+}
