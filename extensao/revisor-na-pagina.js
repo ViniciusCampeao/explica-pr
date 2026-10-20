@@ -123,8 +123,8 @@
       const papel = elementos.papel.value;
       const nomePapel = papeis.find(([valor]) => valor === papel)?.[1] || 'Revisor de código';
       elementos.contexto.textContent = `${nomePapel} · ${Math.ceil(diffAtual.length / 1000)} mil caracteres analisados`;
-      adicionarMensagem(`Li as alterações desta página. Vou revisar como ${nomePapel.toLocaleLowerCase()}.`, 'espera');
-      historico = [{ role: 'user', texto: `Faça a revisão automática deste diff. Comece pelo resultado mais importante. Para achados, informe gravidade, arquivo e linha aproximada.\n\n<diff>\n${diffAtual}\n</diff>` }];
+      adicionarMensagem('Revisando as alterações…', 'espera');
+      historico = [{ role: 'user', texto: `Revise este diff como ${nomePapel.toLocaleLowerCase()}. Comece por problemas concretos, se houver.\n\n<diff>\n${diffAtual}\n</diff>` }];
       const resposta = await chamada(historico, papel);
       if (versao !== versaoPagina) return;
       if (!resposta?.ok) {
@@ -156,7 +156,7 @@
     if (!pergunta || ocupado) return;
     if (!diffAtual) { adicionarMensagem('Ainda estou lendo o diff. Aguarde um instante.'); return; }
     if (!historico.length || historico.at(-1)?.role !== 'model') {
-      adicionarMensagem('A revisão automática não terminou. Confira sua chave da API e recarregue a página para iniciar uma nova revisão.');
+      adicionarMensagem('A revisão não terminou. Confira a chave nas configurações e recarregue a página para tentar de novo.');
       return;
     }
     elementos.entrada.value = '';
