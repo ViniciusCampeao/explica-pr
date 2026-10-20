@@ -9,22 +9,12 @@
 <body class="janela">
   <header class="topo"><a class="marca" href="#inicio"><span class="simbolo">{·}</span> explica<span>pr</span></a><button id="abrir-configuracoes" class="icone" aria-label="Abrir configurações" title="Configurações">⚙</button></header>
   <main id="inicio">
-    <div class="selo"><i></i> CÓDIGO MAIS FÁCIL DE ENTENDER</div>
-    <h1>Um diff. Três jeitos de <em>explicar.</em></h1>
-    <p class="subtitulo">Cole as alterações e escolha para quem será o resumo.</p>
-    <label class="rotulo" for="diff">DIFF DO PULL REQUEST</label>
-    <textarea id="diff" spellcheck="false" placeholder="Cole aqui o diff…&#10;&#10;No GitHub, abra o PR e acrescente .diff ao final da URL."></textarea>
-    <div class="contador"><span id="contagem">0 caracteres</span><span>Limite: 100 mil</span></div>
-    <span class="rotulo rotulo-publico">RESUMO PARA</span>
-    <div class="opcoes" role="group" aria-label="Público do resumo">
-      <button class="opcao selecionada" data-formato="engenharia">Engenharia</button>
-      <button class="opcao" data-formato="produto">Produto</button>
-      <button class="opcao" data-formato="lideranca">Liderança</button>
-    </div>
-    <button id="analisar" class="botao-principal"><span>Explicar este diff</span><b>↗</b></button>
-    <p id="aviso-chave" class="aviso-chave" hidden>Configure sua chave do Google AI Studio em <button id="configurar-agora" class="link-botao">Configurações</button> para começar.</p>
-    <section id="resultado" class="resultado" hidden><div class="resultado-topo"><span class="rotulo">RESUMO</span><button id="copiar" class="link-botao">Copiar</button></div><div id="texto" class="texto"></div></section>
-    <p class="privacidade">O diff é enviado ao Google Gemini para análise. Remova dados confidenciais antes de usar.</p>
+    <div class="selo"><i></i> REVISÃO AUTOMÁTICA DE CÓDIGO</div>
+    <h1>Abra o commit.<br><em>A revisão começa.</em></h1>
+    <p class="subtitulo">Entre em um commit, pull request ou comparação no GitHub. O Explica PR lê o diff e abre uma conversa na própria página.</p>
+    <div class="cartao-info"><b>Revisor de código</b><span>Também pode atuar como especialista em segurança, testes, pessoa mantenedora ou par de programação.</span></div>
+    <button id="configurar" class="botao-principal"><span>Configurar minha chave Gemini</span><b>↗</b></button>
+    <p class="privacidade">A extensão só lê diffs no GitHub. O diff e a conversa são enviados ao Google Gemini.</p>
   </main>
   <script src="janela.js"></script>
 </body>
