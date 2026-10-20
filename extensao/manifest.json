@@ -1,10 +1,25 @@
 {
   "manifest_version": 3,
-  "name": "Explica PR — resumo de código com IA",
-  "version": "0.2.0",
-  "description": "Explique um diff em português para engenharia, produto ou liderança.",
-  "permissions": ["storage", "clipboardWrite"],
+  "name": "Explica PR — revisão automática de código",
+  "version": "0.4.0",
+  "description": "Revise commits e pull requests do GitHub com uma conversa em português.",
+  "permissions": ["storage"],
   "host_permissions": ["https://generativelanguage.googleapis.com/*"],
+  "background": {
+    "scripts": ["servico-fundo.js"],
+    "service_worker": "servico-fundo.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://github.com/*/*/commit/*",
+        "https://github.com/*/*/pull/*",
+        "https://github.com/*/*/compare/*"
+      ],
+      "js": ["revisor-na-pagina.js"],
+      "run_at": "document_idle"
+    }
+  ],
   "action": {
     "default_title": "Explica PR",
     "default_popup": "janela.html"
