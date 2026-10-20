@@ -1,10 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Explica PR — revisor de código",
-  "version": "0.6.0",
-  "description": "Escolha o que quer revisar em commits e pull requests do GitHub.",
-  "permissions": ["storage"],
+  "version": "0.7.0",
+  "description": "Escolha o que quer revisar em commits e pull requests do GitHub com o serviço de IA configurado.",
+  "permissions": ["storage", "permissions"],
   "host_permissions": ["https://generativelanguage.googleapis.com/*"],
+  "optional_host_permissions": ["https://*/*", "http://localhost/*", "http://127.0.0.1/*"],
   "background": {
     "scripts": ["servico-fundo.js"],
     "service_worker": "servico-fundo.js"

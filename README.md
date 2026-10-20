@@ -1,6 +1,6 @@
 # Explica PR
 
-Extensão de navegador para revisar código no GitHub. Ao abrir um commit, pull request ou comparação, o painel lê o diff e pergunta o que você quer conferir. Só envia o diff ao Gemini depois que você descreve o foco.
+Extensão de navegador para revisar código no GitHub. Ao abrir um commit, pull request ou comparação, o painel lê o diff e pergunta o que você quer conferir. Só envia o diff ao serviço de IA escolhido depois que você descreve o foco.
 
 ## Como pedir a revisão
 
@@ -22,14 +22,14 @@ A extensão só injeta o painel em páginas de commit, pull request e comparaç�
 2. Abra a página de extensões do navegador (`chrome://extensions`, `edge://extensions` ou `brave://extensions`).
 3. Ative o **Modo do desenvolvedor**.
 4. Escolha **Carregar sem compactação** e selecione a pasta `extensao`.
-5. Abra as configurações da extensão para salvar sua chave da API. Em um commit ou pull request, escreva no painel o que quer analisar.
+5. Abra as configurações da extensão e escolha Gemini ou uma API compatível com OpenAI. Em um commit ou pull request, escreva no painel o que quer analisar.
 
 ### Firefox
 
 1. Baixe ou clone este repositório.
 2. Abra `about:debugging#/runtime/this-firefox`.
 3. Escolha **Carregar extensão temporária…** e selecione `extensao/manifest.json`.
-4. Abra as configurações da extensão para salvar sua chave da API. Em um commit ou pull request, escreva no painel o que quer analisar.
+4. Abra as configurações da extensão e escolha Gemini ou uma API compatível com OpenAI. Em um commit ou pull request, escreva no painel o que quer analisar.
 
 A instalação temporária do Firefox pode ser removida quando o navegador fechar. A distribuição permanente exige empacotamento e publicação pela loja do navegador.
 
@@ -37,18 +37,22 @@ A instalação temporária do Firefox pode ser removida quando o navegador fecha
 
 Execute `python3 scripts/gerar-pacote.py`. O arquivo `distribuicao/explica-pr-extensao.zip` contém os arquivos da extensão prontos para extrair e carregar no navegador. A página estática em `distribuicao/` pode ser servida por qualquer host estático.
 
-## Configurar a IA
+## Configurar o serviço de IA
 
-1. Crie uma chave no [Google AI Studio](https://aistudio.google.com/apikey).
-2. Abra as configurações da extensão e cole a chave.
-3. Escolha o modelo Gemini disponível na sua conta.
-4. Abra um commit, pull request ou comparação no GitHub e diga o que quer que o revisor procure.
+Nas configurações, escolha uma das opções:
+
+- **Google Gemini:** crie uma chave no [Google AI Studio](https://aistudio.google.com/apikey) e escolha um modelo disponível para ela.
+- **API compatível com OpenAI:** informe o endereço base, o identificador do modelo e uma chave emitida pelo serviço escolhido. O endereço normalmente termina na versão da API, como `/v1`; a extensão acrescenta `/chat/completions`. Chaves e modelos dependem do serviço. Uma chave Gemini não funciona em outro provedor, nem o contrário.
+
+Ao salvar uma API compatível, o navegador pede permissão para o domínio informado. A extensão só faz chamadas para esse domínio. Use HTTPS; HTTP é aceito apenas para `localhost` e `127.0.0.1`.
+
+Depois, abra um commit, pull request ou comparação no GitHub e diga o que quer que o revisor procure.
 
 O Google pode oferecer uma faixa gratuita da API, mas modelos, cotas, disponibilidade, região e condições mudam. Consulte a [lista oficial de modelos](https://ai.google.dev/gemini-api/docs/models) e os [preços e limites](https://ai.google.dev/gemini-api/docs/pricing) antes de usar.
 
 ## Privacidade e chave da API
 
-A chave fica no armazenamento local da extensão neste navegador. A extensão lê o diff de páginas de commit, pull request e comparação do GitHub, mas só envia o diff e as mensagens ao Google Gemini depois que você informa o que quer analisar. A chave acompanha a chamada para autenticação. O restante da página não é enviado. A extensão não tem servidor próprio e não guarda diffs nem conversas. Cada análise pode consumir sua cota da API. Evite enviar senhas, tokens, dados pessoais ou código confidencial.
+A chave fica no armazenamento local da extensão neste navegador. A extensão lê o diff de páginas de commit, pull request e comparação do GitHub, mas só envia o diff e as mensagens ao serviço escolhido depois que você informa o que quer analisar. A chave acompanha a chamada para autenticação. O restante da página não é enviado. A extensão não tem servidor próprio e não guarda diffs nem conversas. Cada análise pode consumir sua cota ou gerar cobrança conforme as regras do provedor. Evite enviar senhas, tokens, dados pessoais ou código confidencial.
 
 ## Atualizações
 
@@ -56,7 +60,7 @@ Um publicador na VPS acompanha a branch `main` e atualiza a página e o ZIP em a
 
 ## Limites
 
-- A análise depende da disponibilidade e das cotas do serviço do Google.
+- A análise depende da disponibilidade, compatibilidade e das cotas do serviço escolhido. “Compatível com OpenAI” não garante suporte a todos os modelos, parâmetros ou formatos de cada provedor.
 - O revisor pode errar; confira os achados antes de agir sobre eles.
 - Referências a arquivos e linhas podem ficar imprecisas em diffs grandes.
 - O painel só funciona em páginas de commit, pull request e comparação hospedadas em `github.com`.
