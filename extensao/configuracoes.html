@@ -11,14 +11,26 @@
     <a class="marca" href="janela.html"><span class="simbolo">{·}</span> explica<span>pr</span></a>
     <div class="selo"><i></i> CONFIGURAÇÃO LOCAL</div>
     <h1>Sua chave, <em>seu navegador.</em></h1>
-    <p class="subtitulo">O Explica PR usa a API do Gemini para revisar commits e pull requests do GitHub. Crie sua chave no <a href="https://aistudio.google.com/apikey" target="_blank" rel="noreferrer">Google AI Studio</a> e salve-a aqui.</p>
-    <label class="rotulo" for="chave">CHAVE DA API GEMINI</label>
+    <p class="subtitulo">Escolha o serviço de IA. Cada serviço exige uma chave própria; chaves não são intercambiáveis. A extensão aceita Gemini ou serviços compatíveis com a API da OpenAI.</p>
+    <label class="rotulo" for="provedor">SERVIÇO DE IA</label>
+    <select id="provedor"><option value="gemini">Google Gemini</option><option value="compativel">API compatível com OpenAI</option></select>
+    <div id="campos-gemini">
+    <label class="rotulo rotulo-modelo" for="chave">CHAVE DA API GEMINI · <a href="https://aistudio.google.com/apikey" target="_blank" rel="noreferrer">Criar chave</a></label>
     <div class="campo-chave"><input id="chave" type="password" autocomplete="off" spellcheck="false" placeholder="Cole sua chave da API"><button id="mostrar-chave" class="botao-secundario">Mostrar</button></div>
     <label class="rotulo rotulo-modelo" for="modelo">MODELO</label>
     <select id="modelo"><option value="gemini-3.8-flash">Gemini 3.8 Flash</option><option value="gemini-3.5-flash">Gemini 3.5 Flash</option><option value="gemini-3.5-flash-lite">Gemini 3.5 Flash-Lite</option></select>
+    </div>
+    <div id="campos-compativel" hidden>
+      <label class="rotulo rotulo-modelo" for="url-api">ENDEREÇO BASE DA API</label>
+      <input id="url-api" type="url" autocomplete="url" spellcheck="false" placeholder="https://api.openai.com/v1">
+      <label class="rotulo rotulo-modelo" for="modelo-compativel">NOME DO MODELO</label>
+      <input id="modelo-compativel" type="text" autocomplete="off" spellcheck="false" placeholder="Ex.: gpt-4o-mini">
+      <label class="rotulo rotulo-modelo" for="chave-compativel">CHAVE DESTE SERVIÇO</label>
+      <div class="campo-chave"><input id="chave-compativel" type="password" autocomplete="off" spellcheck="false" placeholder="Cole a chave fornecida pelo serviço"><button id="mostrar-chave-compativel" class="botao-secundario">Mostrar</button></div>
+    </div>
     <button id="salvar" class="botao-principal"><span>Salvar configuração</span><b>↗</b></button>
     <p id="estado" class="estado" role="status"></p>
-    <aside class="aviso-privacidade"><b>O que a extensão acessa</b><p>O painel só aparece em commits, pull requests e comparações no GitHub. A extensão lê o diff dessas páginas, não outras abas ou o histórico. Sua chave fica no armazenamento local deste navegador. O diff e as mensagens só são enviados ao Google Gemini depois que você diz o que quer analisar; a chave acompanha a chamada. O restante da página não é enviado. A extensão não tem servidor próprio e não guarda diffs ou conversas. Evite compartilhar código confidencial com o provedor.</p></aside>
+    <aside class="aviso-privacidade"><b>O que a extensão acessa</b><p>O painel só aparece em commits, pull requests e comparações no GitHub. A extensão lê o diff dessas páginas, não outras abas ou o histórico. Sua chave fica no armazenamento local deste navegador. O diff e as mensagens só são enviados ao serviço escolhido depois que você pede a análise; a chave acompanha a chamada. Ao escolher uma API compatível, o navegador pedirá acesso ao domínio informado. O provedor recebe o conteúdo enviado. Evite compartilhar código confidencial se não puder enviá-lo a esse serviço.</p></aside>
   </main>
   <script src="configuracoes.js"></script>
 </body>
