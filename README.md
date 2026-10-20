@@ -27,6 +27,10 @@ Extensão de navegador que transforma um diff em uma explicação em português 
 
 A instalação temporária do Firefox pode ser removida quando o navegador fechar. A distribuição permanente exige empacotamento e publicação pela loja do navegador.
 
+## Gerar o pacote para baixar
+
+Execute `python3 scripts/gerar-pacote.py`. O arquivo `distribuicao/explica-pr-extensao.zip` contém os arquivos da extensão prontos para extrair e carregar no navegador. A página estática em `distribuicao/` pode ser servida por qualquer host estático.
+
 ## Configurar a IA
 
 1. Crie uma chave no [Google AI Studio](https://aistudio.google.com/apikey).
