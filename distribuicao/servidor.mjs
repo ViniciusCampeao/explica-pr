@@ -2,7 +2,7 @@ import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-const pasta = new URL('./', import.meta.url).pathname;
+const pasta = process.env.EXPLICA_PR_PASTA_PUBLICA || new URL('./', import.meta.url).pathname;
 const host = process.env.HOST || '127.0.0.1';
 const porta = Number(process.env.PORT || 8766);
 const arquivos = {

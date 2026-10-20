@@ -14,17 +14,18 @@
   <main>
     <div class="selo"><i></i> EXTENSÃO GRATUITA E DE CÓDIGO ABERTO</div>
     <h1>Entenda o código.<br><em>Compartilhe a ideia.</em></h1>
-    <p class="intro">Abra um commit ou pull request no GitHub e receba uma revisão automática em uma conversa dentro da página. Sem copiar e colar o diff.</p>
+    <p class="intro">Abra um commit no GitHub e diga o que você quer que o revisor procure. A conversa aparece na própria página e se limita ao foco que você escolher.</p>
     <a class="download" href="/explica-pr-extensao.zip" download>Baixar extensão <span>↓</span></a>
     <span class="nota">Arquivo ZIP · Instalação manual · Você precisará da sua própria chave Gemini</span>
     <section class="cartao">
       <h2>Como adicionar ao navegador</h2>
       <div class="navegadores">
-        <div><h3>Chrome, Edge ou Brave</h3><ol><li>Descompacte o arquivo baixado.</li><li>Abra <code>chrome://extensions</code> (ou a página de extensões equivalente).</li><li>Ative o <b>Modo do desenvolvedor</b>.</li><li>Clique em <b>Carregar sem compactação</b> e escolha a pasta extraída.</li><li>Configure sua chave. Depois, abra um commit ou PR no GitHub: a revisão aparece sozinha.</li></ol></div>
+        <div><h3>Chrome, Edge ou Brave</h3><ol><li>Descompacte o arquivo baixado.</li><li>Abra <code>chrome://extensions</code> (ou a página de extensões equivalente).</li><li>Ative o <b>Modo do desenvolvedor</b>.</li><li>Clique em <b>Carregar sem compactação</b> e escolha a pasta extraída.</li><li>Configure sua chave. Ao abrir um commit ou PR, escreva no painel o que quer analisar.</li></ol></div>
         <div><h3>Firefox</h3><ol><li>Descompacte o arquivo baixado.</li><li>Abra <code>about:debugging#/runtime/this-firefox</code>.</li><li>Clique em <b>Carregar extensão temporária…</b>.</li><li>Escolha <code>manifest.json</code> na pasta extraída.</li><li>Configure sua chave. Depois, abra um commit ou PR no GitHub.</li></ol></div>
       </div>
     </section>
-    <aside class="aviso"><b>Acesso e privacidade:</b> o painel só aparece em commits, pull requests e comparações do GitHub. Cada abertura inicia uma solicitação ao Gemini e pode consumir sua cota. Sua chave fica no armazenamento local; o diff e as mensagens da conversa são enviados ao Google para análise. Evite repositórios privados ou código confidencial se não puder compartilhar esses dados com o provedor.</aside>
+    <p class="nota">A VPS acompanha a branch <code>main</code> e atualiza esta página e o ZIP em até cerca de um minuto. A extensão instalada em modo de desenvolvedor ainda precisa ser recarregada no navegador.</p>
+    <aside class="aviso"><b>Acesso e privacidade:</b> o painel só aparece em commits, pull requests e comparações do GitHub. A extensão só lê o diff no GitHub. O diff, o foco e as mensagens são enviados ao Google Gemini depois que você pede a análise; isso pode consumir sua cota. Sua chave fica no armazenamento local. Evite repositórios privados ou código confidencial se não puder compartilhar esses dados com o provedor.</aside>
   </main>
   <footer><span>Explica PR · interface e documentação em português.</span><a href="https://github.com/ViniciusCampeao/explica-pr" rel="noreferrer">Ver atualizações</a></footer>
 </body>
